@@ -26,6 +26,12 @@ class Spectator : AppCompatActivity() {
             finish()
         }
 
+        player1View.winnerIcon.visibility = View.INVISIBLE
+        player1View.winnerText.text = ""
+
+        player2View.winnerIcon.visibility = View.INVISIBLE
+        player2View.winnerText.text = ""
+
 
         Log.d(TAG, "About to connect...")
 

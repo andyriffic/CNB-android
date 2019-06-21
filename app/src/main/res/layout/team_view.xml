@@ -64,7 +64,7 @@
                android:layout_height="200dp"
                android:layout_gravity="center"
                android:paddingTop="40dp"
-               android:tint="#78AB46"
+               android:tint="#14A76C"
                android:visibility="visible"
                />
 
@@ -74,7 +74,7 @@
               android:textAlignment="center"
               android:fontFamily="@font/bubblegum"
               android:textSize="30sp"
-              android:textColor="#78AB46"
+              android:textColor="#14A76C"
               android:paddingRight="10dp"
               android:paddingLeft="10dp"/>
 
