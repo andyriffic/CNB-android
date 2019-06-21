@@ -1,3 +1,4 @@
 <resources>
     <string name="app_name">CNB</string>
+    <string name="title_activity_spectator">Spectator</string>
 </resources>
