@@ -49,7 +49,7 @@ class Spectator : AppCompatActivity() {
 
             runOnUiThread {
 
-                player1View.loadingIndicator.visibility = View.INVISIBLE
+                loadingIndicator.visibility = View.INVISIBLE
                 state.player1?.let { player ->
                     player1View.teamName.text = player.name
                     player1View.playerName.text = player.avatar?.name
@@ -66,7 +66,6 @@ class Spectator : AppCompatActivity() {
                     }
                 }
 
-                player2View.loadingIndicator.visibility = View.INVISIBLE
                 state.player2?.let { player ->
                     player2View.teamName.text = player.name
                     player2View.playerName.text = player.avatar?.name
