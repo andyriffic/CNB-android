@@ -15,5 +15,10 @@ class MainActivity : AppCompatActivity() {
             val intent = Intent(this, Spectator::class.java)
             startActivity(intent)
         }
+
+        playButton.setOnClickListener {
+            val intent = Intent(this, PlayGame::class.java)
+            startActivity(intent)
+        }
     }
 }

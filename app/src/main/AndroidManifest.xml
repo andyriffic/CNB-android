@@ -12,10 +12,13 @@
             android:supportsRtl="true"
             android:theme="@style/AppTheme"
             android:usesCleartextTraffic="true">
+        <activity android:name=".SelectPlayerActivity">
+        </activity>
+        <activity android:name=".PlayGame">
+        </activity>
         <activity
                 android:name=".Spectator"
-                android:label="@string/title_activity_spectator"
-                android:theme="@style/AppTheme.NoActionBar">
+                android:label="@string/title_activity_spectator">
         </activity>
         <activity android:name=".MainActivity">
             <intent-filter>

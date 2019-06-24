@@ -22,3 +22,9 @@ data class GameState(
     val status: String,
     val result: GameResult?
 )
+
+data class Player(
+    val name: String,
+    val imageName: String,
+    val team: String
+)

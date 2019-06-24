@@ -2,14 +2,9 @@ package com.example.cnb
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.util.Log
 import android.view.View
-import com.google.gson.Gson
-import io.socket.client.IO
-import io.socket.client.Socket
 import kotlinx.android.synthetic.main.activity_spectator.*
 import kotlinx.android.synthetic.main.team_view.view.*
-import org.json.JSONObject
 
 class Spectator : AppCompatActivity() {
 

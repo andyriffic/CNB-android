@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:tools="http://schemas.android.com/tools"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:background="@color/backgroundPrimary"
+        android:weightSum="1"
+        tools:context=".PlayGame">
+
+    <androidx.appcompat.widget.Toolbar android:id="@+id/toolbar" android:layout_width="match_parent"
+                                       android:layout_height="?attr/actionBarSize"
+                                       app:title="Play Game"
+                                       android:background="@color/border"
+                                       app:navigationIcon="?attr/homeAsUpIndicator">
+        <ProgressBar android:id="@+id/loadingIndicator"
+                     android:layout_gravity="right"
+                     android:indeterminateTint="@color/colorHeading"
+                     android:layout_marginRight="20dp"
+                     android:layout_width="30dp"
+                     android:layout_height="30dp"/>
+    </androidx.appcompat.widget.Toolbar>
+
+    <TextView android:layout_width="match_parent"
+              android:layout_height="wrap_content"
+              android:text="Team"
+              android:textColor="@color/colorHeadingSecondary"
+              android:textSize="19sp"
+              android:textAlignment="center"
+              android:paddingTop="10dp"
+              android:paddingRight="20dp"
+              android:paddingLeft="10dp"/>
+
+    <TextView android:id="@+id/teamName"
+              android:layout_width="match_parent"
+              android:layout_height="wrap_content"
+              tools:text="TEAM NAME"
+              android:fontFamily="@font/bubblegum"
+              android:textSize="35sp"
+              android:textStyle="bold"
+              android:textColor="@color/colorHeading"
+              android:paddingBottom="20dp"
+              android:textAlignment="center"/>
+
+    <TextView android:layout_width="match_parent"
+              android:layout_height="wrap_content"
+              android:text="Player"
+              android:textColor="@color/colorHeadingSecondary"
+              android:textSize="19sp"
+              android:textAlignment="center"
+              android:paddingRight="10dp"
+              android:paddingLeft="10dp"/>
+
+    <TextView android:id="@+id/playerName"
+              android:layout_width="match_parent"
+              android:layout_height="wrap_content"
+              tools:text="Player Name"
+              android:fontFamily="@font/bubblegum"
+              android:textSize="35sp"
+              android:textStyle="bold"
+              android:textColor="@color/colorPrimary"
+              android:paddingBottom="20dp"
+              android:textAlignment="center"/>
+
+    <Button android:id="@+id/playButton"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@color/border"
+            android:layout_margin="20dp"
+            android:fontFamily="@font/bubblegum"
+            android:textSize="30sp"
+            android:enabled="false"
+            android:textColor="@color/backgroundButtonStandard"
+            android:text="Select player"/>
+
+</LinearLayout>

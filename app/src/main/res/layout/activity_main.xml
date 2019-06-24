@@ -28,8 +28,6 @@
             android:layout_weight="1"
             android:fontFamily="@font/bubblegum"
             android:textSize="40sp"
-            android:enabled="false"
-            android:visibility="gone"
             android:textColor="@color/backgroundButtonStandard"
             android:text="Play"/>
 
