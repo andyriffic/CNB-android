@@ -64,14 +64,13 @@
               android:paddingBottom="20dp"
               android:textAlignment="center"/>
 
-    <Button android:id="@+id/playButton"
+    <Button android:id="@+id/selectPlayerButton"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:background="@color/border"
             android:layout_margin="20dp"
             android:fontFamily="@font/bubblegum"
             android:textSize="30sp"
-            android:enabled="false"
             android:textColor="@color/backgroundButtonStandard"
             android:text="Select player"/>
 

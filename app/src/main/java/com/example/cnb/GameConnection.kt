@@ -11,7 +11,7 @@ object GameConnection {
     // private val socket = IO.socket("http://10.1.1.25:3002/game")
     private val socket = IO.socket("http://cnb.finx-rocks.com/game")
     private var gameState: GameState? = null
-    private var players: Array<Player> = arrayOf()
+    private var playersState: Array<Player> = arrayOf()
     private const val TAG = "GAME_CONNECTION"
     private var gameStateCallbacks: Array<(gameState: GameState) -> Unit> = arrayOf()
     private var playerListCallbacks: Array<(players: Array<Player>) -> Unit> = arrayOf()
@@ -39,6 +39,7 @@ object GameConnection {
             Log.d(TAG, "PLAYERS UPDATE")
             Log.d(TAG, it[0].toString())
             val playersList: Array<Player> = Gson().fromJson(it[0].toString(), Array<Player>::class.java)
+            playersState = playersList
             Log.d(TAG, playersList.toString())
         }
 
@@ -56,8 +57,19 @@ object GameConnection {
         }
     }
 
+    private fun notifyPlayersUpdate(players: Array<Player>) {
+        playerListCallbacks.forEach { callback ->
+            callback(players)
+        }
+    }
+
     fun onGameStateUpdate(callback: (gameState: GameState) -> Unit) {
         gameStateCallbacks += callback
         gameState?.let { gameState -> callback(gameState) }
+    }
+
+    fun onPlayersUpdate(callback: (players: Array<Player>) -> Unit) {
+        playerListCallbacks += callback
+        playersState?.let { players -> callback(playersState) }
     }
 }
