@@ -1,6 +1,8 @@
 package com.example.cnb
 
+import android.app.Activity
 import android.content.Context
+import android.content.Intent
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
@@ -9,11 +11,14 @@ import android.widget.BaseAdapter
 import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
 import kotlinx.android.synthetic.main.activity_select_player.*
+import kotlinx.android.synthetic.main.activity_select_player.loadingIndicator
+import kotlinx.android.synthetic.main.activity_spectator.*
 import kotlinx.android.synthetic.main.activity_spectator.toolbar
 
 class SelectPlayerActivity : AppCompatActivity() {
 
     private val gameConnection: GameConnection = GameConnection
+    private var _players: Array<Player>? = null
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -23,19 +28,36 @@ class SelectPlayerActivity : AppCompatActivity() {
             finish()
         }
 
-        gameConnection.onPlayersUpdate { players ->
+        playerListView.setOnItemClickListener { adapterView, view, position, id ->
+            val selectedPlayer = _players?.get(position)
+            val intent = Intent()
 
-            runOnUiThread {
-                playerListView.adapter = PlayerViewAdapter(this, players)
+            selectedPlayer?.let { player ->
+                intent.putExtra("player-name", player.name)
+                intent.putExtra("team-name", player.team)
             }
-
+            setResult(Activity.RESULT_OK, intent)
+            finish()
         }
 
+        gameConnection.onPlayersUpdate { players ->
 
+            _players = players
+
+            runOnUiThread {
+                loadingIndicator.visibility = View.INVISIBLE
+                playerListView.adapter = PlayerViewAdapter(this, players)
+            }
+        }
+    }
+
+    override fun onDestroy() {
+        super.onDestroy()
+        gameConnection.destroy()
 
     }
 
-    private class PlayerViewAdapter(context: Context, players: Array<Player>): BaseAdapter() {
+    private class PlayerViewAdapter(context: Context, players: Array<Player>) : BaseAdapter() {
 
         private val _context: Context = context
         private val _players = players
@@ -53,14 +75,15 @@ class SelectPlayerActivity : AppCompatActivity() {
         }
 
         override fun getView(position: Int, convertView: View?, viewGroup: ViewGroup?): View {
+            val player = _players.get(position)
             val layoutInflater = LayoutInflater.from(_context)
             val playerViewRow = layoutInflater.inflate(R.layout.player_selection_view, viewGroup, false)
 
             val playerNameText = playerViewRow.findViewById<TextView>(R.id.playerName)
-            playerNameText.text = "player"
+            playerNameText.text = player.name
 
             val playerTeamText = playerViewRow.findViewById<TextView>(R.id.teamName)
-            playerTeamText.text = "team"
+            playerTeamText.text = player.team
 
             return playerViewRow
         }

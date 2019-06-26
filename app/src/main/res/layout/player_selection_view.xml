@@ -2,21 +2,25 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
               xmlns:tools="http://schemas.android.com/tools"
               android:orientation="horizontal"
-              android:padding="12dp"
+              android:padding="18dp"
               android:layout_width="match_parent"
               android:layout_height="match_parent">
 
     <TextView android:id="@+id/playerName"
               tools:text="Player Name"
               android:layout_width="0dp"
-              android:textColor="@color/colorHeading"
+              android:textColor="@color/colorPrimary"
+              android:textSize="28sp"
               android:layout_height="wrap_content" android:layout_weight="3"/>
 
     <TextView android:id="@+id/teamName"
               tools:text="Team Name"
               android:layout_width="0dp"
               android:textAlignment="center"
-              android:textColor="@color/colorPrimary"
+              android:background="@color/border"
+              android:textColor="@color/colorHeading"
+              android:textSize="20sp"
+              android:padding="8dp"
               android:layout_height="wrap_content" android:layout_weight="1"/>
 
 </LinearLayout>

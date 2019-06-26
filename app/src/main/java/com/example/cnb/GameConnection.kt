@@ -41,6 +41,7 @@ object GameConnection {
             val playersList: Array<Player> = Gson().fromJson(it[0].toString(), Array<Player>::class.java)
             playersState = playersList
             Log.d(TAG, playersList.toString())
+            notifyPlayersUpdate(playersState)
         }
 
         socket.connect()
@@ -71,5 +72,9 @@ object GameConnection {
     fun onPlayersUpdate(callback: (players: Array<Player>) -> Unit) {
         playerListCallbacks += callback
         playersState?.let { players -> callback(playersState) }
+    }
+
+    fun destroy() {
+        socket.disconnect()
     }
 }
