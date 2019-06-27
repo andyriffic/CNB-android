@@ -8,16 +8,18 @@
         android:background="@color/backgroundPrimary"
         tools:context=".MainActivity">
 
-    <TextView android:layout_width="match_parent"
-              android:layout_height="0dp"
-              android:text="Finx Rocks!"
-              android:padding="20dp"
-              android:textAlignment="center"
-              android:gravity="center"
-              android:textSize="80sp"
-              android:fontFamily="@font/bubblegum"
-              android:textColor="@color/colorPrimary"
-              android:layout_weight="3"
+    <Button android:id="@+id/titleTextButton"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:text="Finx Rocks!"
+            android:background="@color/backgroundPrimary"
+            android:padding="10dp"
+            android:textAlignment="center"
+            android:gravity="center"
+            android:textSize="60sp"
+            android:fontFamily="@font/bubblegum"
+            android:textColor="@color/colorPrimary"
+            android:layout_weight="3"
     />
 
     <Button android:id="@+id/playButton"
