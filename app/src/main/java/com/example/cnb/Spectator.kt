@@ -11,6 +11,17 @@ class Spectator : AppCompatActivity() {
     private val TAG = "SOCKET"
     private val gameConnection: GameConnection = GameConnection
 
+    private fun getFriendlyGameStatus(status: String): String {
+        when {
+            status == "EMPTY" -> return "WAITING FOR PLAYERS"
+            status == "WAITING_FOR_PLAYER_1" -> return "WAITING FOR PLAYERS"
+            status == "WAITING_FOR_PLAYER_2" -> return "WAITING FOR PLAYERS"
+            status == "READY" -> return "READY"
+            status == "FINISHED" -> return "GAME OVER"
+            else -> return "-"
+        }
+    }
+
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -28,6 +39,8 @@ class Spectator : AppCompatActivity() {
 
         gameConnection.onGameStateUpdate { gameState ->
             runOnUiThread {
+
+                gameStatus.text = getFriendlyGameStatus(gameState.status)
 
                 loadingIndicator.visibility = View.INVISIBLE
                 gameState.player1?.let { player ->

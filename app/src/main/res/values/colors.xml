@@ -4,6 +4,8 @@
     <color name="colorPrimaryDark">#00574B</color>
     <color name="colorAccent">#D81B60</color>
     <color name="backgroundPrimary">#272727</color>
+    <color name="featureBackground">#464362</color>
+    <color name="featureText">#D98371</color>
     <color name="colorHeading">#FFE400</color>
     <color name="colorHeadingSecondary">#747474</color>
     <color name="backgroundButtonStandard">#FFE400</color>
