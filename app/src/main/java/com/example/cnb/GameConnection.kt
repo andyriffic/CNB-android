@@ -8,13 +8,17 @@ import org.json.JSONObject
 
 object GameConnection {
 
-    // private val socket = IO.socket("http://10.1.1.25:3002/game")
-    private val socket = IO.socket("http://cnb.finx-rocks.com/game")
+    const val baseUrl = "http://10.1.1.151:3002"
+
+    private val socket = IO.socket("$baseUrl/game")
+    //private val socket = IO.socket("http://cnb.finx-rocks.com/game")
     private var gameState: GameState? = null
     private var playersState: Array<Player> = arrayOf()
+    private var theme: Theme? = null
     private const val TAG = "GAME_CONNECTION"
     private var gameStateCallbacks: Array<(gameState: GameState) -> Unit> = arrayOf()
     private var playerListCallbacks: Array<(players: Array<Player>) -> Unit> = arrayOf()
+    private var themeCallbacks: Array<(theme: Theme) -> Unit> = arrayOf()
 
     init {
         socket.on(Socket.EVENT_CONNECT) {
@@ -42,6 +46,12 @@ object GameConnection {
             playersState = playersList
             Log.d(TAG, playersList.toString())
             notifyPlayersUpdate(playersState)
+        }.on("THEME_UPDATE") {
+            Log.d(TAG, "THEME UPDATE")
+            Log.d(TAG, it[0].toString())
+            theme = Gson().fromJson(it[0].toString(), Theme::class.java)
+            Log.d(TAG, theme.toString())
+            notifyThemeUpdate(theme)
         }
 
         socket.connect()
@@ -64,6 +74,14 @@ object GameConnection {
         }
     }
 
+    private fun notifyThemeUpdate(theme: Theme?) {
+        theme?.let{
+            themeCallbacks.forEach { callback ->
+                callback(theme)
+            }
+        }
+    }
+
     fun onGameStateUpdate(callback: (gameState: GameState) -> Unit) {
         gameStateCallbacks += callback
         gameState?.let { gameState -> callback(gameState) }
@@ -72,6 +90,31 @@ object GameConnection {
     fun onPlayersUpdate(callback: (players: Array<Player>) -> Unit) {
         playerListCallbacks += callback
         playersState?.let { players -> callback(playersState) }
+    }
+
+    fun onThemeUpdate(callback: (theme: Theme) -> Unit) {
+        themeCallbacks += callback
+        theme?.let { theme -> callback(theme) }
+    }
+
+    fun makeMove(slot: String?, moveId: String?, playerName: String?, playerImage: String?) {
+        val message = JSONObject()
+        message.put("type", "MAKE_MOVE")
+
+        val payload = JSONObject()
+        payload.put("slot", slot)
+        payload.put("move", moveId)
+        payload.put("powerUp", "NONE")
+
+        val avatar = JSONObject()
+        avatar.put("name", playerName)
+        avatar.put("imageName", playerImage)
+
+        payload.put("avatar", avatar)
+
+        message.put("payload", payload)
+
+        socket.emit("MAKE_MOVE", message)
     }
 
     fun destroy() {

@@ -1,7 +1,8 @@
 package com.example.cnb
 
 data class Avatar(
-    val name: String
+    val name: String,
+    val imageName: String
 )
 
 data class PlayerGameState(
@@ -26,5 +27,17 @@ data class GameState(
 data class Player(
     val name: String,
     val imageName: String,
-    val team: String
+    val team: String,
+    val slot: String
+)
+
+data class Move(
+    val id: String,
+    val name: String,
+    val imagePath: String
+)
+
+data class Theme(
+    val name: String,
+    val moves: Array<Move>
 )

@@ -34,7 +34,9 @@ class SelectPlayerActivity : AppCompatActivity() {
 
             selectedPlayer?.let { player ->
                 intent.putExtra("player-name", player.name)
+                intent.putExtra("player-image", player.imageName)
                 intent.putExtra("team-name", player.team)
+                intent.putExtra("player-slot", player.slot)
             }
             setResult(Activity.RESULT_OK, intent)
             finish()

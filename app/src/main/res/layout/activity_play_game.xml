@@ -74,4 +74,23 @@
             android:textColor="@color/backgroundButtonStandard"
             android:text="Select player"/>
 
+    <include android:id="@+id/moveSelection"
+             layout="@layout/move_selection"
+             android:layout_weight="1"
+             android:layout_width="match_parent"
+             android:layout_height="wrap_content"/>
+
+    <Button android:id="@+id/playGameButton"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@color/border"
+            android:layout_margin="20dp"
+            android:fontFamily="@font/bubblegum"
+            android:textSize="50sp"
+            android:paddingTop="30dp"
+            android:paddingBottom="30dp"
+            android:textColor="@color/colorPrimary"
+            android:text="PLAY!"/>
+
+
 </LinearLayout>
