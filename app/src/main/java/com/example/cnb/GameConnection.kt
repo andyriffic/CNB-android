@@ -8,7 +8,7 @@ import org.json.JSONObject
 
 object GameConnection {
 
-    const val baseUrl = "http://10.1.1.151:3002"
+    const val baseUrl = "http://10.150.12.13:3002"
 
     private val socket = IO.socket("$baseUrl/game")
     //private val socket = IO.socket("http://cnb.finx-rocks.com/game")
@@ -75,7 +75,7 @@ object GameConnection {
     }
 
     private fun notifyThemeUpdate(theme: Theme?) {
-        theme?.let{
+        theme?.let {
             themeCallbacks.forEach { callback ->
                 callback(theme)
             }
@@ -118,6 +118,7 @@ object GameConnection {
     }
 
     fun destroy() {
+        //TODO: Call this somewhere
         socket.disconnect()
     }
 }

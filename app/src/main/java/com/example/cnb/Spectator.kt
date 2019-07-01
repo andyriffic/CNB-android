@@ -104,10 +104,4 @@ class Spectator : AppCompatActivity() {
         }
 
     }
-
-    override fun onDestroy() {
-        super.onDestroy()
-        gameConnection.destroy()
-
-    }
 }

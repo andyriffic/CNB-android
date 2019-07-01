@@ -53,12 +53,6 @@ class SelectPlayerActivity : AppCompatActivity() {
         }
     }
 
-    override fun onDestroy() {
-        super.onDestroy()
-        gameConnection.destroy()
-
-    }
-
     private class PlayerViewAdapter(context: Context, players: Array<Player>) : BaseAdapter() {
 
         private val _context: Context = context

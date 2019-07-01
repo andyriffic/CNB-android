@@ -95,6 +95,8 @@ class PlayGame : AppCompatActivity() {
             gameConnection.makeMove(
                 selectedPlayerSlot, selectedMoveId, selectedPlayerName, selectedPlayerImageName
             )
+            playGameButton.text = "READY!"
+            playGameButton.isEnabled = false
         }
 
         gameConnection.onThemeUpdate { theme ->
