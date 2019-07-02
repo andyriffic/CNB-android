@@ -92,5 +92,18 @@
             android:textColor="@color/colorPrimary"
             android:text="PLAY!"/>
 
+    <TextView android:id="@+id/readyText"
+              android:layout_width="match_parent"
+              android:layout_height="wrap_content"
+              android:text="Ready, watch on the screen :)"
+              android:fontFamily="@font/bubblegum"
+              android:textSize="35sp"
+              android:textStyle="bold"
+              android:textColor="@color/colorPrimary"
+              android:padding="20dp"
+              android:visibility="gone"
+              tools:visibility="visible"
+              android:textAlignment="center"/>
+
 
 </LinearLayout>

@@ -24,8 +24,9 @@ class PlayGame : AppCompatActivity() {
     private var selectedPlayerImageName: String? = null
     private var selectedMoveId: String? = null
     private var selectedColorBackground = ColorDrawable(Color.parseColor("#14A76C"))
+    private var complete = false
 
-    fun setSelectPlayerVisibility() {
+    private fun setSelectPlayerVisibility() {
         val playerSelected = selectedPlayerSlot != null
 
         if (playerSelected) {
@@ -37,7 +38,7 @@ class PlayGame : AppCompatActivity() {
         }
     }
 
-    fun setPlayButtonVisibility() {
+    private fun setPlayButtonVisibility() {
         val selectedMove = selectedMoveId != null
 
         if (selectedMove) {
@@ -47,7 +48,10 @@ class PlayGame : AppCompatActivity() {
         }
     }
 
-    fun selectPlayerMove(moveId: String) {
+    private fun selectPlayerMove(moveId: String) {
+        if (complete) {
+            return
+        }
         selectedMoveId = moveId
         moveSelection.optionA.background = ColorDrawable(Color.TRANSPARENT)
         moveSelection.optionB.background = ColorDrawable(Color.TRANSPARENT)
@@ -95,8 +99,9 @@ class PlayGame : AppCompatActivity() {
             gameConnection.makeMove(
                 selectedPlayerSlot, selectedMoveId, selectedPlayerName, selectedPlayerImageName
             )
-            playGameButton.text = "READY!"
-            playGameButton.isEnabled = false
+            playGameButton.visibility = View.GONE
+            readyText.visibility = View.VISIBLE
+            complete = true
         }
 
         gameConnection.onThemeUpdate { theme ->
