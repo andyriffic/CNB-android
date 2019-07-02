@@ -8,6 +8,7 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.View
 import android.widget.ImageButton
+import android.widget.Toast
 import com.squareup.picasso.Picasso
 import kotlinx.android.synthetic.main.activity_play_game.*
 import kotlinx.android.synthetic.main.move_selection.view.*
@@ -73,6 +74,16 @@ class PlayGame : AppCompatActivity() {
 
         setSelectPlayerVisibility()
         setPlayButtonVisibility()
+
+        gameConnection.onGameStateUpdate { gameState ->
+            if (gameState.status == "FINISHED") {
+                runOnUiThread {
+                    val toast = Toast.makeText(applicationContext, "Please wait until a new game", Toast.LENGTH_LONG)
+                    toast.show()
+                    finish()
+                }
+            }
+        }
 
         toolbar.setNavigationOnClickListener {
             finish()

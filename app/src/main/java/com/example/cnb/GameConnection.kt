@@ -8,7 +8,7 @@ import org.json.JSONObject
 
 object GameConnection {
 
-    //const val baseUrl = "http://10.150.34.21:3002"
+    //const val baseUrl = "http://10.1.1.151:3002"
     const val baseUrl = "http://cnb.finx-rocks.com/game"
 
     private val socket = IO.socket("$baseUrl/game")

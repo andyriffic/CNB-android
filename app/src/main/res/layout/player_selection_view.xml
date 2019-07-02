@@ -10,7 +10,8 @@
               tools:text="Player Name"
               android:layout_width="0dp"
               android:textColor="@color/colorPrimary"
-              android:textSize="28sp"
+              android:fontFamily="@font/bubblegum"
+              android:textSize="32sp"
               android:layout_height="wrap_content" android:layout_weight="3"/>
 
     <TextView android:id="@+id/teamName"
@@ -21,6 +22,7 @@
               android:textColor="@color/colorHeading"
               android:textSize="20sp"
               android:padding="8dp"
+              android:visibility="gone"
               android:layout_height="wrap_content" android:layout_weight="1"/>
 
 </LinearLayout>
